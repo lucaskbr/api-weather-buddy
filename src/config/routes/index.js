@@ -1,9 +1,9 @@
 const { Router } = require('express')
 
+const WeatherRouteComposite = require('./composites/weather-route-composite')
+
 const router = Router()
 
-router.get('/', async (req, res) => {
-  return res.json({ ok: 'ok' })
-})
+router.get('/weather/:cityName', WeatherRouteComposite.getByCityName)
 
 module.exports = router
