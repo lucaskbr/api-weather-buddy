@@ -1,5 +1,5 @@
 const { resolve } = require('path')
-const GetWeatherOfCityByNameService = require(resolve('./src/domain/services/get-weather-of-city-by-name-service.js'))
+const GetWeatherByCityNameService = require(resolve('./src/domain/services/get-weather-by-city-name-service.js'))
 
 const makeGetCityWeatherByNameInCache = () => {
   class GetCityWeatherByNameInCacheSpy {
@@ -50,7 +50,7 @@ const makeSut = () => {
   const getCityWeatherByNameInApiSpy = makeGetCityWeatherByNameInApi()
   const saveCityWeatherInCacheSpy = makeSaveCityWeatherInCache()
 
-  const sut = new GetWeatherOfCityByNameService({
+  const sut = new GetWeatherByCityNameService({
     getCityWeatherByNameInCache: getCityWeatherByNameInCacheSpy,
     getCityWeatherByNameInApi: getCityWeatherByNameInApiSpy,
     saveCityWeatherInCache: saveCityWeatherInCacheSpy
@@ -66,7 +66,7 @@ const makeSut = () => {
 
 describe('Service - Get Weather Of City By Name', () => {
   it('Should throw an exception if cityName its not provided', async () => {
-    const sut = new GetWeatherOfCityByNameService({})
+    const sut = new GetWeatherByCityNameService({})
     await expect(sut.get()).rejects
       .toThrowError()
   })

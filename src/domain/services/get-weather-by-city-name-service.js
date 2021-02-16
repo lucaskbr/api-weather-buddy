@@ -1,4 +1,4 @@
-module.exports = class GetWeatherOfCityByNameService {
+module.exports = class GetWeatherByCityNameService {
   constructor ({
     getCityWeatherByNameInCache,
     getCityWeatherByNameInApi,
