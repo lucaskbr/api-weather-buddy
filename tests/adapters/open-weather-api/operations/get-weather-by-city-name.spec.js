@@ -1,3 +1,4 @@
+require('dotenv').config()
 const GetWeatherByCityName = require('../../../../src/adapters/open-weather-api/operations/get-weather-by-city-name')
 
 const makeHttpClientSpy = () => {
@@ -12,8 +13,16 @@ const makeHttpClientSpy = () => {
   httpClientSpy.result = {
     headers: {},
     data: {
-      city: 'Curitiba',
-      weather: 'cold'
+      name: 'Curitiba',
+      weather: [
+        {
+          description: 'description',
+          icon: 'icon'
+        }
+      ],
+      main: {
+        temp: 666
+      }
     }
   }
   return httpClientSpy
@@ -38,12 +47,18 @@ describe('Open Weather Api - Operations - Get Weather By City Name', () => {
     expect(httpClientSpy.route).toBe(sut.route)
   })
 
-  it('Should return data from httpClient if request succeed', async () => {
+  it('Should return data mapped from httpClient if request succeed', async () => {
     const { sut, httpClientSpy } = makeSut()
 
     const expectedResult = {
-      city: 'Curitiba',
-      weather: 'cold'
+      cityName: 'Curitiba',
+      weather: {
+        description: 'description',
+        icon: `${process.env.WEATHER_MAP_IMGS_URL}/icon.png`,
+        temperature: {
+          celsius: 666
+        }
+      }
     }
 
     await expect(sut.get('Curitiba')).resolves.toEqual(expectedResult)

@@ -1,3 +1,5 @@
+const getWeatherByCityNameMapper = require('../mappers/get-weather-by-city-name-mapper')
+
 module.exports = class GetWeatherByCityName {
   constructor ({ httpClient } = {}) {
     this.httpClient = httpClient
@@ -14,10 +16,11 @@ module.exports = class GetWeatherByCityName {
       this.route,
       {
         params: {
-          q: cityName
+          q: cityName,
+          units: 'metric'
         }
       })
-      .then(result => result.data)
+      .then(result => getWeatherByCityNameMapper(result.data))
       .catch(e => {
         if (e.response.status === 404) {
           return null

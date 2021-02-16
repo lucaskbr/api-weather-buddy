@@ -26,8 +26,6 @@ describe('Adapters - Cache - Redis - Weather Get Weather By City Name', () => {
     sut.getKeys.get = jest.fn(() => [])
     sut.getDataByKey.get = jest.fn(() => ({ cityName: 'Curitiba', weather: 'cold' }))
 
-    console.log(sut.getKeys.get())
-
     await expect(sut.get('Curitiba')).resolves.toBe(null)
     expect(sut.getDataByKey.get).not.toHaveBeenCalled()
   })
