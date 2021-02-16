@@ -22,7 +22,7 @@ module.exports = class GetWeatherByCityNameService {
 
     const cityWeather = await this.getCityWeatherByNameInApi.get(cityName)
 
-    this.saveCityWeatherInCache.save(cityWeather)
+    this.saveCityWeatherInCache.save(cityName, cityWeather)
 
     return cityWeather
   }

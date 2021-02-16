@@ -35,7 +35,8 @@ const makeGetCityWeatherByNameInApi = () => {
 
 const makeSaveCityWeatherInCache = () => {
   class SaveCityWeatherInCacheSpy {
-    async save (cityWeather) {
+    async save (cityName, cityWeather) {
+      this.cityName = cityName
       this.cityWeather = cityWeather
       this.result = cityWeather
       return this.result
@@ -110,7 +111,7 @@ describe('Service - Get Weather Of City By Name', () => {
 
     getCityWeatherByNameInCacheSpy.result = undefined
 
-    await sut.get('São Paulo')
+    await sut.get('Curitiba')
 
     expect(saveCityWeatherInCacheSpy.result).toEqual({
       from: 'API',
