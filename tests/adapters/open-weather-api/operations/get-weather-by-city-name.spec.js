@@ -50,4 +50,32 @@ describe('Open Weather Api - Operations - Get Weather By City Name', () => {
 
     expect(httpClientSpy.route).toEqual(sut.route)
   })
+
+  it('Should return null if request status code are 404', async () => {
+    const { sut, httpClientSpy } = makeSut()
+
+    const expectedResult = null
+
+    // eslint-disable-next-line
+    httpClientSpy.result = Promise.reject({
+      response: {
+        status: 404
+      }
+    })
+
+    await expect(sut.get('Curitiba')).resolves.toBe(expectedResult)
+  })
+
+  it('Should throw an error if request status code arent 404', async () => {
+    const { sut, httpClientSpy } = makeSut()
+
+    // eslint-disable-next-line
+    httpClientSpy.result = Promise.reject({
+      response: {
+        status: 400
+      }
+    })
+
+    await expect(sut.get('Curitiba')).rejects.toThrow()
+  })
 })

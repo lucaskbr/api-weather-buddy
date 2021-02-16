@@ -10,14 +10,20 @@ module.exports = class GetWeatherByCityName {
    *
    */
   async get (cityName) {
-    const result = await this.httpClient.get(
+    return this.httpClient.get(
       this.route,
       {
         params: {
           q: cityName
         }
       })
+      .then(result => result.data)
+      .catch(e => {
+        if (e.response.status === 404) {
+          return null
+        }
 
-    return result.data
+        throw new Error(`Open Weather Api: statusCode: ${e.response.status} message: ${e.response.statusText}`)
+      })
   }
 }
