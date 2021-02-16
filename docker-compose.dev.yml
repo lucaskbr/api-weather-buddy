@@ -1,0 +1,9 @@
+version: "3"
+services:
+  web:
+    build:
+      dockerfile: dockerfile.dev
+    command: npm run start:dev
+    environment:
+      NODE_ENV: dev
+      DEBUG: nodejs-docker-express:*

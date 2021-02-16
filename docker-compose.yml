@@ -1,0 +1,15 @@
+version: "3"
+services:
+  web:
+    build:
+      context: ./
+    volumes:
+      - .:/app
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    restart: always
+    environment:
+      NODE_ENV: dev
+      DEBUG: nodejs-docker-express:*
+    env_file:
+      - .env

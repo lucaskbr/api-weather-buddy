@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest --config ./jest.config.json",
     "test:watch": "npm run test -- --watch",
-    "dev": "nodemon src/index.js"
+    "start": "node src/index.js",
+    "start:dev": "nodemon src/index.js"
+
   },
   "keywords": [],
   "author": "",
