@@ -17,4 +17,9 @@ describe('Adapters - Cache - Redis - Save Data By Key', () => {
     await expect(sut.save('key')).rejects
       .toThrowError('Missing param: data')
   })
+
+  it('Should have the correct timeout', async () => {
+    const { sut } = makeSut()
+    await expect(sut.timeout).toBe(300)
+  })
 })
