@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "8934daf3-9a2f-4e22-bd79-aa2d7b46924b",
+		"name": "Weather-Buddy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ByCityName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/weather/:cityName",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"weather",
+						":cityName"
+					],
+					"variable": [
+						{
+							"key": "cityName",
+							"value": "London"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLastSearchedCities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/weather?max=5",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "max",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
