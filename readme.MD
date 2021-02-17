@@ -4,7 +4,7 @@
 
 > An app that consumes Open Weather Api maps the response and cache the result. Builded with nodejs 
 
-## :information_source: How to use
+## :information_source: How to use the api
 
 ```sh
 git clone https://github.com/lucaskbr/api-weather-buddy.git
@@ -19,12 +19,12 @@ npm run up:prod
 # Docker compose will handle the app
 ```
 
-## 🔍  Use the front-end interface
+## 🔥  How to use the front-end interface
 ```sh
-docker ps
-docker exec -it CONTAINER_ID redis-cli
-KEYS *
-GET key
+git clone https://github.com/lucaskbr/front-weather-buddy.git
+yarn
+yarn start
+# Can use any port to run the app
 ```
 
 
@@ -75,4 +75,3 @@ This makes components exchangeable at any level and facilitates test automation.
 
 * Github: [@lucaskbr](https://github.com/lucaskbr)
 * Linkedin: [@lucaskbr](https://www.linkedin.com/in/lucas-klasa-13891414b/)
-
